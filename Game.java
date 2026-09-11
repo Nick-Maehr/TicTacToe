@@ -22,12 +22,15 @@ public class Game {
     Scanner scanner = new Scanner(System.in);
 
     board.prettyPrint();
-    for(int i=0; i < 9; i++) {
+    for(int i=0; i < 9; i++)
+    {
 
-      if (i % 2 == 0) {
+      if (i % 2 == 0)
+      {
         winner = PTurn(toMove ? -1 : 1, scanner);
       }
-      else {
+      else
+      {
         winner = CTurn(toMove ? -1 : 1);
       }
       
@@ -35,13 +38,19 @@ public class Game {
       board.prettyPrint();
 
       // Print the winner if the game is over
-      if (winner != 0) {
+      if (winner != 0)
+      {
         System.out.println("The winner is: " + winner);
+        break;
       }
 
       toMove = !toMove;
     }
-    System.out.println("The winner is: " + winner);
+
+    if (winner == 0)
+    {
+      System.out.println("The winner is: " + winner);
+    }
 
     scanner.close();
   }
