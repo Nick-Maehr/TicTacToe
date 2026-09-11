@@ -18,11 +18,16 @@ public class Game {
   /**
   * gameMode: 0 = PvC | 1 = CvP | 2 = PvP | 3 = CvC
   */
-  public void play(int gameMode) {
+  public void play() {
     boolean toMove = true; 
     int winner = 0;
+    int gameMode = null;
 
     Scanner scanner = new Scanner(System.in);
+
+    System.out.println("What game mode do you want to play?\n0 = PvC | 1 = CvP | 2 = PvP | 3 = CvC");
+    String choice = scanner.nextLine();
+    gameMode = Integer.parseInt(choice);
 
     board.prettyPrint();
     for(int i=0; i < 9; i++)
