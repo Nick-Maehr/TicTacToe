@@ -15,7 +15,10 @@ public class Game {
   }
 
 
-  public void play() {
+  /**
+  * gameMode: 0 = PvC | 1 = CvP | 2 = PvP | 3 = CvC
+  */
+  public void play(int gameMode) {
     boolean toMove = true; 
     int winner = 0;
 
@@ -25,7 +28,7 @@ public class Game {
     for(int i=0; i < 9; i++)
     {
 
-      if (i % 2 == 0)
+      if (i % 2 == gameMode || gameMode == 2)
       {
         winner = PTurn(toMove ? -1 : 1, scanner);
       }
