@@ -15,18 +15,27 @@ public class Game {
   }
 
 
+  /**
+  * gameMode: 0 = PvC | 1 = CvP | 2 = PvP | 3 = CvC
+  */
   public void play() {
     boolean toMove = true; 
     int winner = 0;
+    int gameMode = null;
 
     Scanner scanner = new Scanner(System.in);
+
+    System.out.println("What game mode do you want to play?\n0 = PvC | 1 = CvP | 2 = PvP | 3 = CvC");
+    String choice = scanner.nextLine();
+    gameMode = Integer.parseInt(choice);
 
     board.prettyPrint();
     for(int i=0; i < 9; i++)
     {
+
       long startTime = System.nanoTime();
       
-      if (i % 2 == 0)
+      if (i % 2 == gameMode || gameMode == 2)
       {
         winner = PTurn(toMove ? -1 : 1, scanner);
       }
