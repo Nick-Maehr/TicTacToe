@@ -1,14 +1,12 @@
 import java.util.ArrayList;
-// import java.util.HashMap;
-// import java.util.Map;
 
 public class Minimax {
 
   public static int[] move(Board board, int toMove) {
 
     int[] bestMove = new int[2];
-    int[] moveResult = minimax(board.getBoard(), 8, toMove);
-    
+    int[] moveResult = minimax(board.getBoard(), 9, toMove);
+
     bestMove[0] = moveResult[1];
     bestMove[1] = moveResult[2];
 
@@ -18,7 +16,9 @@ public class Minimax {
 
   private static int[] minimax(int[][] board, int depth, int toMove) {
 
-    if (depth == 0 || Board.winState(board) != 0)
+    ArrayList<int[]> children = possibleMoves(board);
+
+    if (depth == 0 || Board.winState(board) != 0 || children.size() == 0)
     {
       int score = Board.winState(board);
 
@@ -33,7 +33,6 @@ public class Minimax {
     }
 
     boolean maximizingPlayer = toMove == 1;
-    ArrayList<int[]> children = possibleMoves(board);
     int[] bestMove = new int[2];
 
     if (maximizingPlayer)
@@ -81,25 +80,6 @@ public class Minimax {
     }
     return result;
   }
-
-  // private static Map<int[], Integer> availableMoves(int[][] board, int toMove) {
-  //   Map<int[], Integer> dictionary = new HashMap<>();
-  //   for(int r=0; r < 3; r++) {
-  //     for (int c=0; c < 3; c++) {
-  //       if (board[r][c] == 0) {
-  //         int score = score(simulateBoard(r, c, board, toMove), toMove);
-  //         dictionary.put(new int[] {r, c}, score);
-  //       }
-  //     }
-  //   }
-  //   return dictionary;
-  // }
-
-  // private static int score(int[][] board, int toMove) {
-  //   int score = Board.winState(board);
-  //   score *= toMove;
-  //   return score;
-  // }
 
   private static int[][] simulateBoard(int r, int c, int[][] board, int toMove)
   {

@@ -19,15 +19,16 @@ public class Game {
   * gameMode: 0 = PvC | 1 = CvP | 2 = PvP | 3 = CvC
   */
   public void play() {
-    boolean toMove = true; 
     int winner = 0;
-    int gameMode = null;
+    int gameMode;
 
     Scanner scanner = new Scanner(System.in);
 
     System.out.println("What game mode do you want to play?\n0 = PvC | 1 = CvP | 2 = PvP | 3 = CvC");
     String choice = scanner.nextLine();
     gameMode = Integer.parseInt(choice);
+
+    boolean toMove = gameMode != 1; 
 
     board.prettyPrint();
     for(int i=0; i < 9; i++)
@@ -43,7 +44,7 @@ public class Game {
       {
         winner = CTurn(toMove ? -1 : 1);
       }
-      long runTime = System.nanoTime() - startTime;
+      double runTime = (System.nanoTime() - startTime) / 1E9;
       
       System.out.println("Process ran for: " + runTime + " seconds");
       board.prettyPrint();
@@ -75,9 +76,18 @@ public class Game {
     // Get user input
     System.out.println("Pick a valid spot (ex: top_right = 0|2)");
     String input = scanner.nextLine();
+    int row;
+    int col;
 
-    int row = Integer.parseInt(input.substring(0, 1));
-    int col = Integer.parseInt(input.substring(2, 3));
+    try {
+      row = Integer.parseInt(input.substring(0, 1));
+      col = Integer.parseInt(input.substring(2, 3));
+    }
+    catch(NumberFormatException e)
+    {
+      System.out.println("Your responce must be int the format: Y|X. Y and X must be integers 0, 1, or 2.");
+      return PTurn(toMove, scanner);
+    }
 
     // Try to make the user's move
     if (board.addMove(row, col, toMove)) {
@@ -86,6 +96,7 @@ public class Game {
     }
 
     // Repeat if the input was invalid
+    System.out.println("Your responce must be int the format: Y|X. Y and X must be integers 0, 1, or 2.");
     return PTurn(toMove, scanner);
   }
 
