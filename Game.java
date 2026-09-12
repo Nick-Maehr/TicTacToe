@@ -33,6 +33,8 @@ public class Game {
     for(int i=0; i < 9; i++)
     {
 
+      long startTime = System.nanoTime();
+      
       if (i % 2 == gameMode || gameMode == 2)
       {
         winner = PTurn(toMove ? -1 : 1, scanner);
@@ -41,8 +43,9 @@ public class Game {
       {
         winner = CTurn(toMove ? -1 : 1);
       }
+      long runTime = System.nanoTime() - startTime;
       
-      
+      System.out.println("Process ran for: " + runTime + " seconds");
       board.prettyPrint();
 
       // Print the winner if the game is over
