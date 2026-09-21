@@ -5,7 +5,7 @@ public class Minimax {
   public static int[] move(Board board, int toMove) {
 
     int[] bestMove = new int[2];
-    int[] moveResult = minimax(board.getBoard(), 9, toMove);
+    int[] moveResult = minimax(board.getBoard(), 9, toMove, toMove==1);
 
     bestMove[0] = moveResult[1];
     bestMove[1] = moveResult[2];
@@ -14,7 +14,7 @@ public class Minimax {
     return bestMove;
   }
 
-  private static int[] minimax(int[][] board, int depth, int toMove) {
+  private static int[] minimax(int[][] board, int depth, int toMove, boolean maximizingPlayer) {
 
     ArrayList<int[]> children = possibleMoves(board);
 
@@ -32,7 +32,6 @@ public class Minimax {
       return new int[] {score, -1, -1};
     }
 
-    boolean maximizingPlayer = toMove == 1;
     int[] bestMove = new int[2];
 
     if (maximizingPlayer)
