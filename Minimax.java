@@ -40,7 +40,7 @@ public class Minimax {
 
       for(int[] child : children)
       {
-        int eval = minimax(simulateBoard(child[0], child[1], board, toMove), depth - 1, -1)[0];
+        int eval = minimax(simulateBoard(child[0], child[1], board, toMove), depth - 1, -1, false)[0];
         if (eval > maxEval)
         {
           maxEval = eval;
@@ -56,7 +56,7 @@ public class Minimax {
 
       for(int[] child : children)
       {
-        int eval = minimax(simulateBoard(child[0], child[1], board, toMove), depth - 1, 1)[0];
+        int eval = minimax(simulateBoard(child[0], child[1], board, toMove), depth - 1, 1, true)[0];
         if (eval < minEval)
         {
           minEval = eval;
