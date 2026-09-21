@@ -102,7 +102,7 @@ public class Game {
 
 
   private int CTurn(int toMove) {
-    int[] move = Minimax.move(board, toMove);
+    int[] move = Minimax.move(board, toMove, toMove);
     int row = move[0];
     int col = move[1];
 
