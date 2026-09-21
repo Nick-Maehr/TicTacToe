@@ -28,7 +28,7 @@ public class Game {
     String choice = scanner.nextLine();
     gameMode = Integer.parseInt(choice);
 
-    boolean toMove = gameMode != 1; 
+    int toMove = 1;
 
     board.prettyPrint();
     for(int i=0; i < 9; i++)
@@ -38,11 +38,11 @@ public class Game {
       
       if (i % 2 == gameMode || gameMode == 2)
       {
-        winner = PTurn(toMove ? -1 : 1, scanner);
+        winner = PTurn(toMove, scanner);
       }
       else
       {
-        winner = CTurn(toMove ? -1 : 1);
+        winner = CTurn(toMove);
       }
       double runTime = (System.nanoTime() - startTime) / 1E9;
       
@@ -102,7 +102,7 @@ public class Game {
 
 
   private int CTurn(int toMove) {
-    int[] move = Minimax.move(board, toMove, toMove);
+    int[] move = Minimax.move(board, toMove);
     int row = move[0];
     int col = move[1];
 
