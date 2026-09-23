@@ -1,5 +1,5 @@
-# TickTackToe
-Tick-Tack-Toe
+# TicTacToe
+Tic-Tac-Toe
 A place for my dabbling in tic-tac-toe and minimax algorithms.
 
 ✨ Features
