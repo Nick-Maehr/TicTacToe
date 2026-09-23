@@ -29,19 +29,20 @@ public class Board {
     for (int r=0; r < 3; r++) {
       for(int c=0; c < 3; c++) {
         int x = board[r][c];
-        if (x == -1) {b[r][c] = "-1";}
-        else {b[r][c] = " " + x;}
+        if (x == -1) {b[r][c] = "O";}
+        else if (x == 1) {b[r][c] = "X";}
+        else {b[r][c] = " ";}
       }
     }
 
-    System.out.println("┌──┬──┬──┐\n│" + b[0][0] + "│" + b[0][1] + "│" + b[0][2] + "│");
-    System.out.println("├──┼──┼──┤\n│" + b[1][0] + "│" + b[1][1] + "│" + b[1][2] + "│");
-    System.out.println("├──┼──┼──┤\n│" + b[2][0] + "│" + b[2][1] + "│" + b[2][2] + "│");
-    System.out.println("└──┴──┴──┘");
+    System.out.println("┌─┬─┬─┐\n│" + b[0][0] + "│" + b[0][1] + "│" + b[0][2] + "│");
+    System.out.println("├─┼─┼─┤\n│" + b[1][0] + "│" + b[1][1] + "│" + b[1][2] + "│");
+    System.out.println("├─┼─┼─┤\n│" + b[2][0] + "│" + b[2][1] + "│" + b[2][2] + "│");
+    System.out.println("└─┴─┴─┘");
   }
 
   /** 
-   * Determines the winner of a board state. Teams denoted by 1 and -1. <br>
+   * Determines the winner of a board state. Teams are denoted by 1 and -1. <br>
    * Inputs: int[][]<br>
    * Outputs: int<br>
    * Interpretation key: -1=A_Team | 0=blanks/draws | 1=B_Team
@@ -57,7 +58,7 @@ public class Board {
       }
     }
 
-    // Check verticle wins
+    // Check vertical wins
     for (int c=0; c < 3; c++) {
       for (int r=0; r < 3; r++) {
         score += b[r][c];
