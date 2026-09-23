@@ -82,22 +82,19 @@ public class Game {
     try {
       row = Integer.parseInt(input.substring(0, 1));
       col = Integer.parseInt(input.substring(2, 3));
+
+      // Try to make the user's move
+      if (board.addMove(row, col, toMove)) {
+        // If the move is valid, end the turn
+        return won();
+      }
     }
-    catch(NumberFormatException e)
+    // Catch if the user input was invalid
+    catch(NumberFormatException | ArrayIndexOutOfBoundsException e)
     {
       System.out.println("Your responce must be int the format: Y|X. Y and X must be integers 0, 1, or 2.");
       return PTurn(toMove, scanner);
     }
-
-    // Try to make the user's move
-    if (board.addMove(row, col, toMove)) {
-      // If the move is valid, end the turn
-      return won();
-    }
-
-    // Repeat if the input was invalid
-    System.out.println("Your responce must be int the format: Y|X. Y and X must be integers 0, 1, or 2.");
-    return PTurn(toMove, scanner);
   }
 
 
