@@ -1,5 +1,5 @@
 # TicTacToe
-![Status](https://github.com/Nick-Maehr/RockPaperScissors/actions/workflows/gradle.yml/badge.svg) 
+![Status](https://github.com/Nick-Maehr/TicTacToe/actions/workflows/gradle.yml/badge.svg)  
 A place for my dabbling in tic-tac-toe and minimax algorithms.
 
 ## ✨ Features
