@@ -16,7 +16,7 @@ None
 
 
 Installation
-Clone the repo: ```bash git clone https://github.com/Nick-Maehr/TickTackToe ```
+Clone the repo: ```bash git clone https://github.com/Nick-Maehr/TicTacToe ```
 Enjoy
 
 🧠 Lessons Learned
