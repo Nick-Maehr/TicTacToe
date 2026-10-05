@@ -34,3 +34,7 @@ Enjoy
 - Introduction to optimizing run time
 
 ## 📸 Sample Images
+<p align="center">
+  <img src="images/Screenshot2.png" alt="Application Screenshot 1" width="40%"> 
+  <img src="images/Screenshot1.png" alt="Application Screenshot 2" width="35%">
+</p>
