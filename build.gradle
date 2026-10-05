@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+// Optional: Tells Gradle where to look if your Main.java isn't in standard folders
+sourceSets {
+    main {
+        java {
+            srcDirs = ['.'] // Looks for Main.java directly in the root folder
+        }
+    }
+}
