@@ -20,10 +20,6 @@ jobs:
     permissions:
       contents: read
 
-    defaults:
-      run:
-        working-directory: TicTacToe
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -36,8 +32,6 @@ jobs:
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
-      with:
-        build-root-directory: TicTacToe
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
@@ -71,5 +65,3 @@ jobs:
     # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
-      with:
-        build-root-directory: TicTacToe
