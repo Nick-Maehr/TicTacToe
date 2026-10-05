@@ -56,7 +56,7 @@ public class Game {
         break;
       }
 
-      toMove = !toMove;
+      toMove = -1 * toMove;
     }
 
     if (winner == 0)
@@ -74,14 +74,14 @@ public class Game {
   private int PTurn(int toMove, Scanner scanner) {
 
     // Get user input
-    System.out.println("Pick a valid spot (ex: top_right = 0|2)");
+    System.out.println("Pick a valid spot (ex: top_right = 2|0)");
     String input = scanner.nextLine();
     int row;
     int col;
 
     try {
-      row = Integer.parseInt(input.substring(0, 1));
-      col = Integer.parseInt(input.substring(2, 3));
+      col = Integer.parseInt(input.substring(0, 1));
+      row = Integer.parseInt(input.substring(2, 3));
 
       // Try to make the user's move
       if (board.addMove(row, col, toMove)) {
@@ -92,9 +92,10 @@ public class Game {
     // Catch if the user input was invalid
     catch(NumberFormatException | ArrayIndexOutOfBoundsException e)
     {
-      System.out.println("Your responce must be int the format: Y|X. Y and X must be integers 0, 1, or 2.");
+      System.out.println("Your responce must be int the format: X|Y. X and Y must be integers 0, 1, or 2.");
       return PTurn(toMove, scanner);
     }
+    return 0;
   }
 
 
